@@ -1,0 +1,199 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <title>Cineflix - Admin</title>
+</head>
+
+<body>
+  <div class="main-container">
+
+    <!--
+      THIS IS HEADER SECTION OF THE APPLICATION.
+      IT HAS APPLICATION LOGO
+      IT HAS OPTION TO CREATE A MOVIE BY
+    -->
+    <header>
+      <div style="width: 60%">
+        <h1>Cineflix</h1>
+      </div>
+      <div class="header-menu">
+        <button id="create-new-movie-btn" onclick="showCreateMovieModal()">Create Movie</button>
+      </div>
+    </header>
+
+    <!--
+      THIS IS SEARCH FILTER SECTION OF THE APPLICATION.
+      IT HAS OPTIONS FOR SORTING BY RATING & RELEASE YEAR
+      IT HAS OPTION TO SEARCH FOR A MOVIE BY NAME
+    -->
+    <section class="search-filter-container">
+      <div class="search-movie">
+        <input type="text" class="search-movie-input" id="search-movie-input">
+        <button id="search-movie-btn">Search</button>
+      </div>
+
+      <div class="sort-movie">
+        <b style="margin-top: 5px;">Sort by: </b> &nbsp &nbsp
+        <button class="sort-button" id="sort-movie-by-rating">Ratings</button>
+        <button class="sort-button" id="sort-movie-by-release-year">Release Year</button>
+      </div>
+    </section>
+
+
+    <!--
+      THIS IS FILTER BY GENRE SECTION OF THE APPLICATION.
+      IT HAS OPTION TO FILTER MOVIES BY GENRE
+    -->
+    <section class="filter-by-genre">
+      <div class="filter-movie">
+        <b style="margin-top: 5px;">Filter by Genre: </b> &nbsp &nbsp
+        <input type="radio" name="genre" value="all" onclick="filterByGenre(this)">
+        <label for="html">All</label>
+        <input type="radio" name="genre" value="action" onclick="filterByGenre(this)">
+        <label for="html">Action</label>
+        <input type="radio" name="genre" value="scifi" onclick="filterByGenre(this)">
+        <label for="css">Sci Fi</label>
+        <input type="radio" name="genre" value="drama" onclick="filterByGenre(this)">
+        <label for="javascript">Drama</label>
+        <input type="radio" name="genre" value="comedy" onclick="filterByGenre(this)">
+        <label for="javascript">Comedy</label>
+      </div>
+    </section>
+
+
+    <!--
+      THIS IS MOVIE LIST CONTAINER SECTION.
+      ALL THE MOVIES WILL BE DISPLAYED IN THIS CONTAINER
+      THE MOVIES WILL BE ADDED DYNAMICALLY IN THIS CONTAINER
+    -->
+    <section class="movie-list-container" id="movie-list-container">
+      <!-- <div class="movie-card">
+        <div class="movie-banner">
+          <img src="" width="240" height="140">
+        </div>
+        <div class="movie-title">
+          <h2>Bad Boys</h2>
+        </div>
+        <div class="movie-description">
+          <p>Some description for the movie which should expand to three lines...</p>
+        </div>
+        <div class="movie-genre">
+          <b>Genre:</b> <text>Comedy, drama, action</text>
+        </div>
+        <div class="movie-release-year">
+          <b>Release Year:</b> <text>2014</text>
+        </div>
+        <div class="movie-rating">
+          <b>Rating:</b><span class="star-rating">4.5</span>
+        </div>
+        <div class="movie-actions">
+          <button>Details</button>
+          <button>Delete</button>
+        </div>
+      </div> -->
+    </section>
+
+    <!--
+      THIS IS MOVIE DETAIL SECTION OF THE APPLICATION.
+      HERE THE DETAIL OF A SELECTED MOVIE IS DISPLAYED
+      THIS SECTION IS HIDDEN BY DEFAULT & OPENS AS A MODAL POPUP
+    -->
+    <section class="movie-details-container hidden" id="movie-detail-section">
+      <div id="myModal" class="overlay">
+        <div class="modal-content" id="modal-content">
+          <span class="close" onclick="hideMovieDetailsModal()">&times;</span>
+
+          <!--Insert Movie detail HTML here-->
+          <div id="selected-movie-detail-container">
+            <!-- <div class="selected-movie-details">
+              <div class="selected-movie-image">
+                <img src="./images/intersteller.jpg" width="100%" height="240">
+              </div>
+              <div class="selected-movie-name">
+                <h2>Intersteller</h2>
+              </div>
+              <div class="selected-movie-description">
+                <p>Some movie description.</p>
+              </div>
+              <div class="selected-movie-other-details">
+                <div class="selected-movie-release">
+                  <b>Release Year: </b>
+                  <text>2014</text>
+                </div>
+                <div class="selected-movie-rating">
+                  <b>Rating: 4.5</b>
+                  <text></text>
+                </div>
+              </div>
+            </div> -->
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!--
+      THIS IS CREATE MOVIE SECTION OF THE APPLICATION.
+      HERE A FORM WILL APPEAR FOR CREATING A NEW MOVIE
+      THIS SECTION IS HIDDEN BY DEFAULT & OPENS AS A MODAL POPUP
+    -->
+    <section class="create-movie-section hidden">
+      <div id="myModal" class="overlay">
+        <div class="modal-content" id="modal-content">
+          <span class="close" onclick="hideCreateMovieModal()">&times;</span>
+
+          <div class="create-movie-form">
+            <div class="create-movie-header-div">
+              <h2>Create a Movie</h2>
+            </div>
+            <form id="create-movie-form">
+              <div class="full-width-field">
+                <div class="label">Movie Name</div>
+                <input type="text" id="name">
+              </div>
+              <div class="full-width-field">
+                <div class="label">Movie Description</div>
+                <textarea rows="10" id="desc">
+                </textarea>
+              </div>
+              <div class="half-width-field">
+                <div style="width: 50%; padding-right: 2px">
+                  <div class="label">Rating</div>
+                  <input type="number" max="5" min="0"  id="rating">
+                </div>
+                <div style="width: 50%; padding-right: 2px">
+                  <div class="label">Release Year</div>
+                  <input type="number" max="2024" min="1920" id="releaseYear">
+                </div>
+              </div>
+              <div class="movie-genre-div">
+                <div class="label">Genre:</div>&nbsp; &nbsp;
+                <div>
+                  <input type="checkbox" id="action" name="genre" value="action">
+                  <label for="action"> Action</label>&nbsp; &nbsp;
+                  <input type="checkbox" id="comedy" name="genre" value="comedy">
+                  <label for="comedy"> Comedy</label>&nbsp; &nbsp;
+                  <input type="checkbox" id="drama" name="genre" value="drama">
+                  <label for="drama"> Drama</label>&nbsp; &nbsp;
+                  <input type="checkbox" id="scifi" name="genre" value="scifi">
+                  <label for="scifi"> Sci Fi</label>&nbsp; &nbsp;
+                </div>
+              </div>
+
+              <div class="create-movie-btn-div">
+                <button class="create-movie-btn">Create Movie</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+<script src="script.js"></script>
+
+</html>

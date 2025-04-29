@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body{
+  font-family: "Noto Sans", serif;
+  font-size: 16px;
+  color: #28282B;
+  background-color: #f0f3f4;
+}
+
+/*Main Container style*/
+.main-container{
+  margin: 2%;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 2px;
+}
+
+/*Header Styling*/
+header{
+  padding: 8px 13px;
+  display: flex;
+  border-bottom: #dedede 1.5px solid;
+  background-color: #e5e7e9;
+}
+.header-menu{
+  width: 40%; 
+  padding: 5px 10px; 
+  text-align: right;
+}
+button{
+  border: none;
+  border-radius: 2px;
+  background-color: #e5e7e9;
+  padding: 10px 10px;
+}
+#create-new-movie-btn{
+  background-color: #28282B;
+  color: white;
+  font-weight: bold;
+}
+/*Search filter container Styling*/
+.search-filter-container, .filter-by-genre{
+  padding: 10px 20px;
+  border-bottom: #dedede 1.5px solid;
+  display: flex;
+}
+
+
+.search-movie{
+  width: 50%;
+}
+.sort-movie{
+  width: 50%;
+  display: flex;
+  justify-content: right;
+}
+
+.search-movie-input{
+  width: 75%;
+  height: 35px;
+  border: #dedede 1.5px solid;
+  padding: 5px 10px;
+}
+
+.sort-button{
+  margin: 0 3px;
+}
+/*Movie list container Styling*/
+.movie-list-container{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 35px;
+}
+
+.movie-card{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 5px;
+  height: fit-content;
+  margin: 10px 10px;
+  width: 250px;
+}
+.movie-banner{
+  width: 240px;
+  height: 140px;
+}
+.movie-title{
+  margin-top: 10px;
+  padding: 5px 0px;
+  border-top: #dedede 1.5px solid;
+}
+.movie-description{
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.movie-genre, .movie-rating, .movie-release-year{
+  margin-top: 5px;
+  font-size: 14px;
+}
+.movie-actions{
+  margin: 10px 0px;
+  padding-top: 10px;
+  border-top: #dedede 1.5px solid;
+  text-align: right;
+}
+.action-button{
+  padding: 5px 10px;
+}
+
+/*Display ratings using star*/
+.star-rating {  /* Or any class you want to use */
+  font-size: 20px; /* Adjust as needed */
+  color: gold;
+  margin-left: 10px;
+}
+.star-rating span{
+  color:gray;
+}
+.star-rating span:nth-child(-n+3){
+  color:gold;
+}
+
+
+/* Show Movie details Style */
+.overlay {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 70px auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%; /* Could be more or less */
+  max-width: 600px; /* Set a maximum width */
+  position: relative; /* For close button positioning */
+  border-radius: 3px; /* Add rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  animation: modalOpen 0.3s ease; /* Add a fade-in animation */
+}
+
+@keyframes modalOpen {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.hidden{
+  display: none;
+}
+.display{
+  display: block;
+}
+
+
+/*Movie details styling*/
+.selected-movie-image{
+  margin-top: 30px;
+}
+.selected-movie-name{
+  margin: 5px 0px;
+  padding: 10px 0px;
+  border-bottom: #dedede 1.5px solid;
+}
+.selected-movie-description{
+  font-size: 16px;
+}
+.selected-movie-other-details{
+  padding: 20px 0px;
+  display: flex;
+  border-bottom: #dedede 1.5px solid;
+}
+.selected-movie-release, .selected-movie-rating{
+  width: 50%;
+}
+.selected-movie-genre{
+  padding: 10px 0px;
+}
+
+
+.create-movie-form{
+  padding: 10px 5px;
+}
+.full-width-field{
+  width: 100%;
+  margin: 10px 0px;
+}
+.half-width-field{
+  width: 100%;
+  display: flex;
+}
+input[id=name]{
+  width: 100%;
+  height: 35px;
+  border: #dedede 1.5px solid;
+  margin-bottom: 10px;
+}
+input[id=rating], input[id=releaseYear]{
+  width: 100%;
+  height: 35px;
+  border: #dedede 1.5px solid;
+  margin-bottom: 10px;
+}
+.label{
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+textarea{
+  width: 100%;
+  border: #dedede 1.5px solid;
+  margin-bottom: 10px;
+}
+.movie-genre-div{
+  display: flex; 
+  padding: 10px 0px; 
+  margin: 10px 0px; 
+  border-top:#dedede 2px solid;
+  border-bottom:#dedede 2px solid;
+}
+.create-movie-btn-div{
+  margin: 10px 0px;
+}
+.create-movie-btn{
+  width: 100%;
+  padding: 12 0px;
+  border: none;
+  font-weight: bold;
+  color: #28282B
+}
+.create-movie-header-div{
+  padding: 10px 0px; 
+  border-bottom: #dedede 1.5px solid;
+}
